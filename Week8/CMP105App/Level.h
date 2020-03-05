@@ -4,6 +4,7 @@
 #include "Framework/Input.h"
 #include <string>
 #include <iostream>
+#include"Circle_Collisions.h"
 
 
 class Level{
@@ -23,4 +24,9 @@ private:
 	// Default variables for level class.
 	sf::RenderWindow* window;
 	Input* input;
+	Circle_Collisions c;
+	Circle_Collisions c1;
+	sf::Texture t;
+	sf::Texture t1;
+	sf::Vector2f velocity;
 };
