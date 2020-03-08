@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include"Circle_Collisions.h"
+#include"AABB_collision.h"
 
 
 class Level{
@@ -26,6 +27,8 @@ private:
 	Input* input;
 	Circle_Collisions c;
 	Circle_Collisions c1;
+	AABB_collision s1;
+	AABB_collision s2;
 	sf::Texture t;
 	sf::Texture t1;
 	sf::Vector2f velocity;

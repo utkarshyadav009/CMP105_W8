@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AABB_collision.cpp" />
     <ClCompile Include="Circle_Collisions.cpp" />
     <ClCompile Include="Framework\Animation.cpp" />
     <ClCompile Include="Framework\Collision.cpp" />
@@ -171,6 +172,7 @@
     <Text Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AABB_collision.h" />
     <ClInclude Include="Circle_Collisions.h" />
     <ClInclude Include="Framework\Animation.h" />
     <ClInclude Include="Framework\Collision.h" />

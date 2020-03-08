@@ -21,6 +21,20 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	c1.setPosition(600, 100);
 	c1.setVelocity(500.0, 500.0);
 
+
+
+	s1.setSize(sf::Vector2f(50, 50));
+	s1.setCollisionBox(sf::FloatRect(0, 0, 50, 50));
+	s1.setPosition(0, 200);
+	s1.setVelocity(200, 0);
+	s1.setFillColor(sf::Color::Blue);
+
+	s2.setPosition(750, 200);
+	s2.setSize(sf::Vector2f(50, 50));
+	s2.setCollisionBox(sf::FloatRect(0, 0, 50, 50));
+	s2.setVelocity(-200, 0);
+	s2.setFillColor(sf::Color::Green);
+
 	
 
 
@@ -42,19 +56,28 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-	c.update(dt); 
-	c1.update(-dt); 
-	if (Collision::checkBoundingCircle(&c, &c1)) 
-	{ c.collisionResponse(NULL); 
-	c1.collisionResponse(NULL); }
-	if (c.getPosition().x + c.getSize().x >= window->getSize().x || c.getPosition().x < 0)
-	{
-		c.aftercollison(dt);
-	}
+	//c.update(dt); 
+	//c1.update(-dt); 
+	//if (Collision::checkBoundingCircle(&c, &c1)) 
+	//{ c.collisionResponse(NULL); 
+	//c1.collisionResponse(NULL); }
+	//if (c.getPosition().x + c.getSize().x >= window->getSize().x || c.getPosition().x < 0)
+	//{
+	//	c.aftercollison(dt);
+	//}
 
-	if (c1.getPosition().x + c1.getSize().x >= window->getSize().x || c1.getPosition().x < 0)
+	//if (c1.getPosition().x + c1.getSize().x >= window->getSize().x || c1.getPosition().x < 0)
+	//{
+	//	c1.aftercollison(dt);
+	//}
+
+	s1.update(dt);
+	s2.update(dt);
+	if (Collision::checkBoundingBox(&s1, &s2))
 	{
-		c1.aftercollison(dt);
+		std::cout << "COOL\n";
+		s1.collisionResponse(NULL); 
+	  s2.collisionResponse(NULL); 
 	}
 }
 
@@ -62,8 +85,10 @@ void Level::update(float dt)
 void Level::render()
 {
 	beginDraw();
-	window->draw(c);
-	window->draw(c1);
+	//window->draw(c);
+	//window->draw(c1);
+	window->draw(s1);
+	window->draw(s2);
 	endDraw();
 }
 
