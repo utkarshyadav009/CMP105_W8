@@ -6,6 +6,7 @@
 #include <iostream>
 #include"Circle_Collisions.h"
 #include"AABB_collision.h"
+#include"pong.h"
 
 
 class Level{
@@ -29,6 +30,9 @@ private:
 	Circle_Collisions c1;
 	AABB_collision s1;
 	AABB_collision s2;
+	pong b;
+	pong p1;
+	pong p2;
 	sf::Texture t;
 	sf::Texture t1;
 	sf::Vector2f velocity;

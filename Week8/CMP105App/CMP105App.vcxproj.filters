@@ -45,6 +45,9 @@
     <ClCompile Include="AABB_collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="pong.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="README.txt">
@@ -77,6 +80,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AABB_collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pong.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
