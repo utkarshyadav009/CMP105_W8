@@ -1,40 +1,46 @@
 #include "pong.h"
+pong::pong()
+{
+	velocity = sf::Vector2f(1, 0);
+}
 void pong::update(float dt)
 {
-	bvelocity = sf::Vector2f(300, 0);
-	move(bvelocity*dt);
+	std::cout << velocity.x << " " << velocity.y << "\n";
+	//velocity = sf::Vector2f(300, 0);
+	if (getPosition().x + getSize().x >= window->getSize().x || getPosition().x < 0)
+	{
+		velocity *= -1.f;
+		//velocity = sf::Vector2f(-300, 0);
+	}
+	move(velocity*speed*dt);
 	
 }
 
 void pong::update_p(float dt)
 {
 	velocity = sf::Vector2f(0, 200);
+	if (getPosition().y + getSize().y >= window->getSize().y || getPosition().y < 0)
+	{
+		velocity = sf::Vector2f(0, -200);
+	}
 	move(velocity * dt);
+	
+
+}
+void pong::stop(float dt)
+{
+
+
 
 }
 bool pong::checkBoundingBox(GameObject* ball , GameObject* bat)
 {
-	if (ball->getCollisionBox().left + ball->getCollisionBox().width < bat->getCollisionBox().left)
-		return false;
-
-	if (ball->getCollisionBox().left > bat->getCollisionBox().left + bat->getCollisionBox().width)
-		return false;
-
-	if (ball->getCollisionBox().top + ball->getCollisionBox().height < bat->getCollisionBox().top)
-		return false;
-
-	if (ball->getCollisionBox().top > bat->getCollisionBox().top + bat->getCollisionBox().height)
-		return false;
-
-	else
-		return true;
-
-
+	return ball->getCollisionBox().intersects(bat->getCollisionBox());
 }
 
 
 void pong::collisionResponse(GameObject* collider)
 {
-	bvelocity = -bvelocity;
+	velocity = -velocity;
 	
 }

@@ -6,6 +6,8 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	window = hwnd;
 	input = in;
 
+
+
 	// initialise game objects
 	//t.loadFromFile("gfx/Beach_Ball.png");
 	//t1.loadFromFile("gfx/Beach_Ball.png");
@@ -37,22 +39,26 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	t.loadFromFile("gfx/Beach_Ball.png");
 	b.setInput(input);
+	b.setWindow(window);
 	b.setTexture(&t);
 	b.setSize(sf::Vector2f(100, 100));
+	b.setCollisionBox(sf::FloatRect(0, 0, 100, 100));
 	b.setPosition(700, 300);
-	b.setVelocity(500.0, 500.0);
+	//b.setVelocity(500.0, 500.0);
 	
 
 
+	p2.setWindow(window);
 	p2.setPosition(1150, 200);
 	p2.setSize(sf::Vector2f(20, 200));
-	p2.setCollisionBox(sf::FloatRect(0, 0, 50, 50));
+	p2.setCollisionBox(sf::FloatRect(0, 0, 20, 200));
 	p2.setVelocity(-200, 0);
 	p2.setFillColor(sf::Color::Green);
 
+	p1.setWindow(window);
 	p1.setPosition(20, 200);
 	p1.setSize(sf::Vector2f(20, 200));
-	p1.setCollisionBox(sf::FloatRect(0, 0, 50, 50));
+	p1.setCollisionBox(sf::FloatRect(0, 0, 20, 200));
 	p1.setVelocity(-200, 0);
 	p1.setFillColor(sf::Color::Green);
 
@@ -84,6 +90,8 @@ void Level::handleInput(float dt)
 	if (input->isKeyDown(sf::Keyboard::Up))
 	{
 		p2.update_p(-dt);
+		
+	
 	}
 }
 
@@ -127,7 +135,7 @@ void Level::update(float dt)
 	}
 	if (Collision::checkBoundingBox(&b, &p2))
 	{
-		std::cout << "WOW\n";
+		std::cout << "COOL\n";
 		b.collisionResponse(NULL);
 
 	}
@@ -144,6 +152,9 @@ void Level::render()
 	window->draw(b);
 	window->draw(p1);
 	window->draw(p2);
+	b.drawDebugCollision(window);
+	p1.drawDebugCollision(window);
+	p2.drawDebugCollision(window);
 	endDraw();
 }
 

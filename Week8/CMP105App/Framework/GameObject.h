@@ -31,8 +31,25 @@ public:
 	bool isCollider() { return collider; };
 	void setCollider(bool b) { collider = b; };
 	sf::FloatRect getCollisionBox();
-	void setCollisionBox(float x, float y, float width, float height) { collisionBox = sf::FloatRect(x, y, width, height); };
-	void setCollisionBox(sf::FloatRect fr) { collisionBox = fr; };
+	void setCollisionBox(float x, float y, float width, float height) { 
+		collisionBox = sf::FloatRect(x, y, width, height); 
+		setDebugCollision(x, y, width, height);
+	};
+	void setCollisionBox(sf::FloatRect fr) { 
+		collisionBox = fr; 
+		setDebugCollision(fr.left, fr.top, fr.width, fr.height);
+	};
+	void setDebugCollision(float x, float y, float w, float h) {
+		hitboxDebug.setPosition(sf::Vector2f(x, y));
+		hitboxDebug.setSize(sf::Vector2f(w, h));
+		hitboxDebug.setFillColor(sf::Color::Transparent);
+		hitboxDebug.setOutlineColor(sf::Color::Red);
+		hitboxDebug.setOutlineThickness(1.f);
+	}
+	void drawDebugCollision(sf::RenderWindow* w) {
+		hitboxDebug.setPosition(sf::Vector2f(getCollisionBox().left, getCollisionBox().top));
+		w->draw(hitboxDebug);
+	}
 	virtual void collisionResponse(GameObject* collider);
 
 	// Set the input component
@@ -46,6 +63,8 @@ protected:
 	// Collision vars
 	sf::FloatRect collisionBox;
 	bool collider;
+
+	sf::RectangleShape hitboxDebug;
 
 	// input component
 	Input* input;
