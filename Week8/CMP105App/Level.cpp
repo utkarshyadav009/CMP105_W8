@@ -37,13 +37,13 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	//s2.setVelocity(-200, 0);
 	//s2.setFillColor(sf::Color::Green);
 
-	t.loadFromFile("gfx/Beach_Ball.png");
+	t.loadFromFile("gfx/ti.png");
 	b.setInput(input);
 	b.setWindow(window);
 	b.setTexture(&t);
-	b.setSize(sf::Vector2f(100, 100));
+	//b.setSize(sf::Vector2f(100, 100));
 	b.setCollisionBox(sf::FloatRect(0, 0, 100, 100));
-	b.setPosition(700, 300);
+	b.setPosition(0, 121);
 	//b.setVelocity(500.0, 500.0);
 	
 
@@ -150,8 +150,8 @@ void Level::render()
 	//window->draw(s1);
 	//window->draw(s2);
 	window->draw(b);
-	window->draw(p1);
-	window->draw(p2);
+	//window->draw(p1);
+	//window->draw(p2);
 	b.drawDebugCollision(window);
 	p1.drawDebugCollision(window);
 	p2.drawDebugCollision(window);
