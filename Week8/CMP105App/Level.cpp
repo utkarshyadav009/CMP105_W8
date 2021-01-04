@@ -43,7 +43,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 	b.setTexture(&t);
 	//b.setSize(sf::Vector2f(100, 100));
 	b.setCollisionBox(sf::FloatRect(0, 0, 100, 100));
-	b.setPosition(0, 121);
+	b.setPosition(100,100 );
 	//b.setVelocity(500.0, 500.0);
 	
 
